@@ -1,0 +1,392 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+/*메인 화이트박스*/
+.container{
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: black;
+    width: 1200px;    /*전체폼의 길이*/
+    height: 800px;
+    margin-top: 50px;  /*전체 폼의 위치*/
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+    display: table;
+   
+}
+
+/*페이지 큰제목*/
+.line{
+    
+    margin-top: 60px;
+    font-family:  'IBMPlexSansKR-Regular';
+    font-weight: 100;
+    
+}
+
+
+
+.contents .line span{
+    font-size: 33px;
+   
+    color: rgba(108, 108, 108, 0.815);
+    box-shadow: inset 0 -2px 0 rgba(237, 181, 164, 0.5) ;
+    
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align:center ;
+    
+}
+
+
+
+
+
+
+
+.cover{
+    width: 60%;
+   
+    display: table-cell;
+}
+
+
+
+.contents{
+    display: table-cell;
+    width: 60%;
+   vertical-align: middle;
+
+   
+}
+
+
+@media (max-width:720px){
+    header, .container{
+        margin: 0;
+    }
+    .container,
+    .cover,
+    .contents{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    .contents{
+        padding: 100px;
+    }
+
+    
+}
+
+
+
+  /*input 타입 스타일*/
+select,
+ input,textarea{
+    width: 100px;
+    height: 25px;
+    font-size: 13px;
+    color: black;
+    border: 1.3px solid #ddd;
+    font-family: 'IBMPlexSansKR-Regular';
+    }
+
+
+/*목록버튼*/
+.gotoboard{
+    text-align: right;
+    margin-bottom: -96px;
+    margin-top: 51px;
+  }
+.list-btn{
+    width: 51px;
+    border-radius: 4px;
+} 
+.list-btn:hover {
+    background-color: lightgray;
+  }
+
+
+
+.write-btn{
+    text-align: right;
+}
+
+
+
+footer p{
+    position: absolute;
+    text-align: center;
+    margin-top: 35px;
+    width: 100%;
+    color: rgba(215, 215, 215, 0.603);
+	    FONT-FAMILY: 'InkLipquid';
+
+}
+
+.board-content{
+    margin-top: 40px;
+}
+
+
+
+
+
+
+.date::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background: #ccc;
+    margin: 0 10px 0 6px;
+    vertical-align: -2px;
+}
+
+.readcnt::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background: #ccc;
+    margin: 0 10px 0 6px;
+    vertical-align: -2px;
+}
+
+.like::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background: #ccc;
+    margin: 0 10px 0 6px;
+    vertical-align: -2px;
+}
+
+.board_wrap{
+    border-bottom: 1px solid silver;
+    margin-top: 30px;
+}
+
+
+.fw-bold{
+    font-weight: 700;
+}
+
+.d-flex{
+    padding: 30px 40px 10px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.07) ;
+}
+
+.card-bg-light {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 10px
+    
+
+    
+}
+
+.card-bg-light {
+    margin-bottom: 20px;
+}
+
+
+
+
+section{
+    background-color: #f8f9fa;
+    margin-top: 100px;
+
+}
+
+
+.mb-4{
+    margin: 20px 10px 10px;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.06); ;
+}
+
+
+.reply-btn {  /*댓글버튼꾸미기*/
+        width: 61px;
+    height: 25px;
+    font-size: 13px;
+    color: black;
+    border: 1px solid #ddd;
+    font-family: 'IBMPlexSansKR-Regular';
+    border-radius: 3px;
+
+}
+
+.reply-btn:hover {  /*댓글버튼꾸미기*/
+  
+    background-color: rgb(212, 212, 212);
+}
+
+.reply-submit{  /*댓글작성버튼 위치조절*/
+    padding-left: 630px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+
+.d-flex{   /*댓글 왼쪽여백*/
+    padding-left: 20px;
+}
+
+.back-btn{
+    font-size: 30px;
+    text-align: right;
+}
+
+.font-reply{
+    font-size: 20px;
+}
+
+.board-title{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.board-info{
+    margin-top: 13px;
+}
+
+.form-control{
+    margin-top: 4px;
+}
+
+.font-reply{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 20px;
+}
+
+p{
+    font-family: 'Pretendard-Regular';
+}
+
+input[type="text"]{
+    border-radius: 6px;
+}
+
+/*대댓글 아코디언*/
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+
+    
+    
+    border-radius: 3px;
+    outline: none;
+    font-size: 13px;
+    transition: 0.4s;
+    width: 57px;
+    height: 25px;
+    font-size: 13px;
+    color: black;
+    border: 2px solid #ddd;
+    font-family: 'IBMPlexSansKR-Regular';
+  }
+
+  .accordion:hover{
+    background-color: rgb(212, 212, 212);
+  }
+
+  .rerebtn{
+    text-align: right;
+  }
+
+  .panel {
+    padding: 10px 30px;
+    display: none;
+    background-color:rgba(0, 0, 0, 0.1);;
+    overflow: hidden;
+    margin-top: 7px;
+  }
+
+  .rereply-writer{
+    text-align: left;
+  }
+
+  .rerewriter-btn{
+    width: 100px;
+    height: 25px;
+    font-size: 10px;
+  }
+  .rereply-submit{
+    margin-top: 7px;
+    
+  }
+
+  .rereply-comment{
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  
+  /*추천버튼*/
+  .likewrap{
+  	text-align: center;
+  }
+  .like-btn{
+  background-color: white;
+  border-style:none; 
+  font-size: 15px;
+  outline: none;
+  font-family: 'IBMPlexSansKR-Regular';
+  font-weight: 600;
+  }

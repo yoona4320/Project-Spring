@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.iu.board.ServiceBoard">
+ 
+ 	<insert id="boinput">
+ 		insert into board (BO_NO,BO_TITLE,BO_CONTENT,BO_PICTURE,BO_WRITER,BO_READCNT,BO_LIKE,RECNT)
+ 		values(BO_NO_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},0,0,0)
+ 	</insert>
+ 	
+ 	<select id="boout" resultType="com.iu.board.BoardDTO">
+ 		select BO_NO,BO_TITLE,TO_CHAR(BO_WRITEDAY, 'YYYY-MM-DD')BO_WRITEDAY,
+ 		BO_CONTENT,BO_PICTURE,BO_READCNT,BO_WRITER,BO_LIKE,RECNT
+ 		from board order by BO_NO desc
+ 	</select>
+ 	
+ 	<!-- detail/조회수 -->
+ 	<select id="bodetail" resultType="com.iu.board.BoardDTO">
+ 		select BO_NO,BO_TITLE,TO_CHAR(BO_WRITEDAY, 'YYYY-MM-DD')BO_WRITEDAY,
+ 		BO_CONTENT,BO_PICTURE,BO_READCNT,BO_WRITER,BO_LIKE,RECNT
+ 		from board where BO_NO=#{param1}
+ 	</select>
+ 	<update id="readcntup">
+ 		UPDATE board SET BO_READCNT=BO_READCNT+1 WHERE BO_NO=#{param1} 
+    </update>
+    <!-- detail/조회수 끝 -->
+    
+    <!-- update -->	
+ 	<select id="bomodify" resultType="com.iu.board.BoardDTO">
+ 		select * from board where BO_NO=#{param1}
+ 	</select> 	
+ 	<update id="boupdate">
+ 		update board set BO_TITLE=#{param2}, BO_CONTENT=#{param4}, BO_PICTURE=#{param5} where BO_NO=#{param1}
+ 	</update>
+ 	<!-- update 끝 -->
+ 	
+ 	<!-- delete -->
+ 	<select id="bodeleteui" resultType="com.iu.board.BoardDTO">
+ 		select * from board where BO_NO=#{param1}
+ 	</select>
+ 	<delete id="bodelete">
+ 		DELETE FROM board WHERE BO_NO=#{param1} 
+ 	</delete>
+ 	<!-- delete 끝 -->
+ 	
+ 	<!-- search -->
+ 	<select id="botitlesearch" resultType="com.iu.board.BoardDTO">
+ 		SELECT * FROM BOARD WHERE BO_TITLE LIKE '%'||#{param2}||'%'
+ 	</select>
+ 	<select id="bowritersearch" resultType="com.iu.board.BoardDTO">
+ 		SELECT * FROM BOARD WHERE BO_WRITER LIKE '%'||#{param6}||'%'
+ 	</select>	
+ 	<!-- search 끝 -->
+ 	
+ 	<!-- page -->
+ 	<select id="cntpage" resultType="int">
+		SELECT COUNT(*)FROM BOARD
+	</select>	
+	<select id="selectpage" resultType="com.iu.board.BoardDTO">
+		SELECT * FROM(
+		SELECT ROWNUM RN,A.*FROM(
+		SELECT * FROM BOARD ORDER BY BO_NO DESC)A)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	<!-- page 끝 -->
+	
+	<!-- 댓글 -->
+	<insert id="boreplysave">
+      INSERT INTO BOREPLY(BO_NO,BO_RNO,BO_WRITER,BO_CONTENT,BO_GROUPS,BO_STEP,BO_INDENT)
+      VALUES(#{param1},BO_RNO_SEQ.NEXTVAL,#{param2},#{param3},BO_RNO_SEQ.CURRVAL,1,0)
+    </insert>
+	<select id="boreplylist" resultType="com.iu.board.BoReplyDTO">
+	  SELECT BO_NO,BO_RNO,TO_CHAR(BO_WRITEDAY, 'YYYY-MM-DD')BO_WRITEDAY,BO_CONTENT,BO_WRITER,BO_GROUPS,BO_STEP,BO_INDENT 
+	  FROM BOREPLY WHERE BO_NO=#{param1} ORDER BY BO_GROUPS ASC, BO_RNO ASC, BO_STEP ASC 
+	</select>
+		<!-- 댓글 삭제 -->
+	<delete id="boredelete">
+      DELETE FROM BOREPLY WHERE BO_RNO=#{BO_RNO}
+   	</delete>
+    <select id="bono" resultType="int">
+       SELECT BO_NO FROM BOREPLY WHERE BO_RNO=#{BO_RNO}
+    </select>
+    	<!-- 댓글 수정  -->
+ 	<update id="ReUpdateForm">
+ 		update BOREPLY set BO_CONTENT=#{param4} where BO_RNO=#{param2}
+ 	</update> 	    	
+        <!-- 댓글 수 표시 -->
+    <update id="recnt">
+       UPDATE BOARD  SET RECNT = (SELECT COUNT(BO_RNO) FROM BOREPLY WHERE BO_NO=#{BO_NO}) WHERE BO_NO = #{BO_NO}
+    </update>
+        <!-- 댓글 삭제시 댓글수 표시도 삭제 -->   
+    <update id="recntdown">
+       UPDATE BOARD  SET RECNT = (SELECT COUNT(BO_RNO) FROM BOREPLY WHERE BO_NO=#{BO_NO}) WHERE BO_NO = #{BO_NO}
+    </update>      
+	<!-- 댓글 끝 -->	
+	
+	<!-- 대댓글 -->
+	<insert id="borereply">
+	 INSERT INTO BOREPLY(BO_NO,BO_RNO,BO_WRITER,BO_CONTENT,BO_GROUPS,BO_STEP,BO_INDENT) 
+	 VALUES(#{param1},BO_RNO_SEQ.NEXTVAL,#{param2},#{param3},#{param4},#{param5},#{param6})
+  	</insert>
+	<update id="bomakereply">
+	 UPDATE BOREPLY SET BO_STEP=BO_STEP+1 WHERE BO_GROUPS=#{param1} and BO_STEP>#{param2} 
+	</update>
+	<!-- 대댓글 끝 -->
+	
+	
+	<!-- 추천 저장 -->
+	<insert id="insertLike">
+		insert into BO_LIKE(LI_NO , BO_NO , MEM_NICKNAME , LIKECHECK) 
+		values(LI_NO_SEQ.NEXTVAL,#{param1},#{param2},0)
+	</insert>
+ 	<!-- 댓글 추천수 -->
+    <update id="updateLike" >
+        update BOARD set 
+        BO_LIKE = BO_LIKE+1
+        where BO_NO = #{BO_NO}
+    </update>
+    <!-- 댓글 추천 중복방지 select문 -->
+    <select id="LikeCheck" resultType="int">
+        select count(LIKECHECK) from BO_LIKE where BO_NO = #{param1} and MEM_NICKNAME = #{param2}
+    </select>
+    <!-- 댓글 추천수 취소 -->
+    <update id="UpdateLikeCancle">
+    	update BOARD set 
+        BO_LIKE = BO_LIKE-1
+        where BO_NO = #{BO_NO}
+    </update>
+    <!-- 댓글 추천취소 시 delete -->
+    <delete id="deleteLike">
+    	delete from BO_LIKE where BO_NO = #{param1} and MEM_NICKNAME = #{param2} 
+    </delete>
+                 
+   	<!-- 끝 -->
+ 	
+ </mapper>

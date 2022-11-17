@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+/*메인 화이트박스*/
+.container{
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: black;
+    width: 1200px;    /*전체폼의 길이*/
+    height: 800px;
+    margin-top: 50px;  /*전체 폼의 위치*/
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+    display: table;
+   
+}
+
+/*페이지 큰제목*/
+.line{
+    text-align: center;
+    margin-top: 60px;
+    font-family:  'IBMPlexSansKR-Regular';
+    font-weight: 100;
+    
+}
+
+
+
+.contents .line span{
+    font-size: 33px;
+   
+    color: rgba(108, 108, 108, 0.815);
+    box-shadow: inset 0 -2px 0 rgba(237, 181, 164, 0.5) ;
+    
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align:center ;
+    
+}
+
+
+/*검색 바,글쓰기 버튼 input 타입 스타일*/
+select,
+ input{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    color: black;
+    border: 1.3px solid #ddd;
+    font-family: 'IBMPlexSansKR-Regular';
+}
+
+.cover .searchbar{
+    display: flex;
+    list-style: none;
+    margin-top: 40px;
+    margin-left: 400px;
+    
+    
+} 
+
+.search-btn{
+    width: 70px;
+    border-radius: 4px;
+}
+
+.searchbar li{
+padding: 1.3px 1px;
+}
+
+.search-btn:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+/*테이블 스타일*/
+.cover{
+    width: 60%;
+   
+    display: table-cell;
+}
+
+.contents{
+    display: table-cell;
+}
+@media (max-width:720px){
+    header, .container{
+        margin: 0;
+    }
+    .container,
+    .cover,
+    .contents{
+        display: block;
+        width: auto;
+    }
+    .contents{
+        padding: 100px;
+    }
+
+    
+}
+table {
+    width: 100%;
+    border-top: 1px solid lightgray;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid lightgray;
+    padding: 10px; 
+    text-align: center;
+    font-family: 'IBMPlexSansKR-Regular';
+  }
+
+
+
+.title{
+    width: 400px;
+ }
+
+ .view , .like{
+    width: 50px;
+ }
+
+
+
+/*글쓰기버튼*/
+
+ .gotowrite{
+    text-align: right;
+    margin-top: 15px;
+}
+
+.write-btn{
+    font-size: 14px;
+    width:59px;
+    font-family: 'IBMPlexSansKR-Regular';
+    border-radius: 4px;
+}
+
+.write-btn:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+
+/*페이지 아이콘*/
+.pagination-box{
+    text-align: center;
+    color: lightgray;
+    
+}
+
+.pagination-box :hover{
+    color: lightcoral;
+    text-decoration: none;
+}
+
+
+.item{
+    font-size: 15px;
+    color: gray;
+    letter-spacing: 15px;
+    
+}
+
+.item cl:hover{
+    color: black;
+}
+
+
+/*푸터*/
+footer p{
+    position: absolute;
+    text-align: center;
+    margin-top: 26px;
+    width: 100%;
+    color: rgba(215, 215, 215, 0.603);
+    FONT-FAMILY: 'InkLipquid';
+
+}
+

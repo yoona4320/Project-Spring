@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KNPSKkomi-Regular00';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KNPSKkomi-Regular00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*메인 화이트박스*/
+.container{
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: black;
+    width: 1200px;    /*전체폼의 길이*/
+    height: 500px;
+    margin-top: 50px ;  /*전체 폼의 위치*/
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+    display: table;
+   
+}
+
+/*컨텐츠 스타일*/
+.contents{
+    display: table-cell;
+    width: 40%;
+   vertical-align: middle;
+    text-align: center;
+    
+   
+}
+.contents h1{
+    font-size: 60px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: 'InkLipquid';
+}
+
+.contents span{
+    font-family: 'InkLipquid';
+    font-size: 40px;
+}
+
+.contents p{
+    white-space: pre;
+    font-size: 25px;
+    line-height: 2.5;
+    font-family: 'KNPSKkomi-Regular00';
+    margin-right: 112px;
+    word-spacing: 8px;
+    margin-top: -59px;
+    margin-bottom: -125px;
+}
+
+
+
+@media (max-width:720px){
+    header, .container{
+        margin: 0;
+    }
+    .container,
+    .cover,
+    .contents{
+        display: block;
+        width: auto;
+    }
+    .contents{
+        padding: 100px;
+    }
+}
+
+
+  /*푸터*/
+  footer p{
+    position: absolute;
+    text-align: center;
+    margin-top: 26px;
+    width: 100%;
+    color: rgba(215, 215, 215, 0.603);
+    font-family: 'InkLipquid';
+
+}
+
+

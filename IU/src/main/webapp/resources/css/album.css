@@ -1,0 +1,347 @@
+@charset "UTF-8";
+
+@font-face {
+font-family: 'UhBeemysen';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+   
+}
+
+body{
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.bg-image{
+	
+   
+    display: flex;
+    width: 100%;
+    height: 100vh; 
+    position: relative;
+}
+
+
+.filter-blur{
+   background: rgba(102, 94, 94, 0.5);
+   backdrop-filter: blur(4px);
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   z-index: 1;
+ 
+}
+
+.backtomenu {
+  position: absolute;
+  top: -50px;
+  right: -1200PX;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.backtomenu a {
+  
+  color: #f1f1f1;
+  
+}
+
+.album-cover{
+    z-index: 2;
+    margin: 389px 11px;
+    margin-top: 80px;
+    margin-left: 170px;
+position: relative;
+
+}
+
+.album-img{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.album-cover .song-info{
+    z-index: 2;
+    color: white;
+    font-size: 28px;
+    margin-top: 5px;
+    margin-left: 7px;
+    font-family:   'LeeSeoyun';
+   
+
+}
+
+
+
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.song-info{
+  position: relative;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgb(62, 61, 61);
+}
+
+@media screen and (max-width: 860px) {
+.album-cover {
+    position: relative;
+    width: 80%;
+    height: 50%;
+    text-align: center;
+    margin: 0 auto 15px;
+}
+
+.mv{
+  
+    width: 100%;
+  
+    
+}
+
+.track-list{
+  right: 50px;
+  bottom: -200px;
+}
+
+
+}
+
+@media screen and (max-width: 880px){
+  .cele-lyrics{
+    right: 200px;
+    bottom: 0;
+  }
+
+  .backtomenu{
+    right: 200px;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 880px){
+  .cele-lyrics{
+    right: 200px;
+    bottom: 0;
+  }
+
+  .backtomenu{
+    right: 200px;
+    bottom: 0;
+  }
+}
+
+
+.track-list{
+  position: absolute;
+  margin-top: -557px;
+  font-size: 25px;
+  color: white;
+  line-height: 2.5;
+  margin-left: 499px;
+  width: 300px;
+}
+
+.notice-title {
+  line-height: 0.9;
+}
+
+
+.track-list ul li{
+    
+    list-style: none;
+    font-size: 20px;
+ 
+ }
+
+
+/* Style the Image Used to Trigger the Modal */
+.musicbtn {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.musicbtn:hover {color: rgb(221, 177, 240);}
+
+
+.musicbtn2 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.musicbtn2:hover {color: rgb(221, 177, 240);}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(243, 190, 172, 0.95); /* Black w/ opacity */
+    overflow: auto;
+}
+
+
+
+
+
+/* 뮤비위치 */
+.mv {
+  
+    position: absolute;
+    display: flex;
+    margin-top: 81px;
+    margin-left: 119px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.mv-title{
+   
+    z-index: 3;
+    color: white;
+    
+    font-family: 'UhBeemysen';
+    
+    text-shadow: 2px 2px 2px grey;
+    font-size: 40px;
+    position: absolute;
+    margin-top: 700px;
+    margin-left: 123px;
+    line-height: 0.9;
+  }
+
+.modal .cele-lyrics {
+  position: relative;
+  width: 315px;
+  top: -28px;
+  font-size: 25px;
+  color: white;
+  white-space: pre;
+  line-height: 1.1;
+  font-family: 'UhBeemysen';
+  left: 634px;
+  margin-right: 114px;
+  text-shadow: 2px 2px 2px grey;
+}
+
+.cele-lyrics{
+  position: absolute;
+}
+
+.mv-title li{
+  list-style: none;
+  display: inline-block; /*li 태그 일렬로 나열*/
+}
+
+
+/* Add Animation - Zoom in the Modal */
+.modal-content {
+  animation-name: zoom;
+  animation-duration: 0.2s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close, .close2, .close3, .close4, .close5, .close6,.close7, .close8, .close9, .close10, 
+.close11, .close12, .close13, .close14, .close15, .close16{
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 60px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 4;
+}
+
+.close:hover, .close2:hover, .close3:hover, .close4:hover, .close5:hover, .close7:hover, .close8:hover, .close9:hover, 
+.close10:hover,  .close11:hover, .close12:hover, .close13:hover, .close14:hover, .close15:hover, .close16:hover,
+.close:focus, .close2:focus, .close3:focus, .close4:focus, .close5:focus, .close7:focus, .close8:focus, .close9:focus, 
+.close10:focus, .close11:focus, .close12:focus, .close13:focus .close14:focus, .close15:focus, .close16:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/*푸터*/
+footer p{
+    position: absolute;
+    text-align: center;
+    margin-top: 26px;
+    width: 100%;
+    color: rgba(215, 215, 215, 0.603);
+    FONT-FAMILY: 'InkLipquid';
+
+}
+
+
+/* 정거장 닫기버튼
+.close2 {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 60px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 4;
+}
+
+.close2:hover,
+.close2:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*닫기버튼 3번째*/
+/* .close3 {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 60px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 4;
+}
+
+.close3:hover,
+.close3:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+} */ 

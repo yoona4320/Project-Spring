@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.iu.member.ServiceMember">
+	<insert id="inputdata">
+		INSERT INTO MEMBER (MEM_NO,MEM_ID,MEM_PW,MEM_NAME,MEM_NICKNAME,MEM_SB,MEM_BIRTH,MEM_EMAIL,MEM_ADDRESS,MEM_TEL)
+		 VALUES(MEM_NO_SEQ.NEXTVAL,#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
+	</insert>
+<resultMap type="com.iu.member.MemberDTO" id="mdto">
+    <result property="MEM_NO" column="MEM_NO"/>
+    <result property="MEM_ID" column="MEM_ID"/>
+	<result property="MEM_PW" column="MEM_PW"/>
+	<result property="MEM_NAME" column="MEM_NAME"/>
+	<result property="MEM_NICKNAME" column="MEM_NICKNAME"/>
+	<result property="MEM_SB" column="MEM_SB"/>
+	<result property="MEM_BIRTH" column="MEM_BIRTH"/>
+	<result property="MEM_EMAIL" column="MEM_EMAIL"/>
+	<result property="MEM_ADDRESS" column="MEM_ADDRESS"/>
+	<result property="MEM_TEL" column="MEM_TEL"/>
+</resultMap>
+<select id="login" resultMap="mdto">
+	SELECT * FROM MEMBER
+	WHERE MEM_ID = #{param1}
+	AND MEM_PW = #{param2}
+</select>
+<select id="detail" resultType="String">
+	SELECT MEM_NICKNAME FROM MEMBER WHERE MEM_ID = #{param1}
+</select>
+
+
+<select id="idcheck" resultType="int">
+	select count(*) from MEMBER where MEM_ID = #{param1}
+</select>
+
+<select id="niccheck" resultType="int">
+	select count(*) from MEMBER where MEM_NICKNAME = #{param5}
+</select>
+
+</mapper>

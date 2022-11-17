@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iu.notice.ServiceNotice">
+	<insert id="ntinputdata">
+		INSERT INTO NOTICE (NT_NO,NT_TITLE,NT_CONTENT,NT_READCNT,NT_WRITER)
+		VALUES(NT_NO_SEQ.NEXTVAL,#{param1},#{param2},0,#{param3})
+	</insert>
+	
+<resultMap type="com.iu.notice.NoticeDTO" id="ndto">
+   <result property="NT_NO" column="NT_NO"/>
+    <result property="NT_WRITEDAY" column="NT_WRITEDAY"/>
+	<result property="NT_TITLE" column="NT_TITLE"/>
+	<result property="NT_CONTENT" column="NT_CONTENT"/>
+	<result property="NT_READCNT" column="NT_READCNT"/>
+	<result property="NT_WRITER" column="NT_WRITER"/>
+</resultMap>	
+	<select id="ntout" resultMap="ndto">
+		SELECT NT_NO,TO_CHAR(NT_WRITEDAY, 'YYYY-MM-DD')NT_WRITEDAY,NT_TITLE,NT_CONTENT,NT_READCNT,NT_WRITER FROM NOTICE
+		ORDER BY NT_NO DESC
+	</select>
+	
+	<select id="ntdetail" resultMap="ndto">
+		SELECT NT_NO,TO_CHAR(NT_WRITEDAY, 'YYYY-MM-DD')NT_WRITEDAY,NT_TITLE,NT_CONTENT,NT_READCNT,NT_WRITER FROM NOTICE WHERE NT_NO=#{param1}
+	</select>
+	<update id="readcntup">
+ 		UPDATE NOTICE SET NT_READCNT=NT_READCNT+1 WHERE NT_NO=#{param1} 
+    </update>
+    
+	<delete id="ntdelete">
+		DELETE FROM NOTICE WHERE NT_NO=#{param1} 
+	</delete>
+	
+	<!-- 페이징처리 2번 -->
+	<select id="cntpage" resultType="int">
+		SELECT COUNT(*)FROM NOTICE
+	</select>
+	<select id="selectpage" resultMap="ndto">
+		SELECT * FROM(
+		SELECT ROWNUM RN,A.*FROM(
+		SELECT * FROM NOTICE ORDER BY NT_NO DESC)A)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="ntmodify" resultMap="ndto">
+		SELECT * FROM NOTICE WHERE NT_NO=#{param1}
+	</select>
+	<update id="ntmodifydata">
+		UPDATE NOTICE SET NT_TITLE=#{param3},NT_CONTENT=#{param4} WHERE NT_NO=#{param1}
+	</update>
+	
+	<!-- search -->
+ 	<select id="nttitlesearch" resultType="com.iu.notice.NoticeDTO">
+ 		SELECT * FROM NOTICE WHERE NT_TITLE LIKE '%'||#{NT_TITLE}||'%'
+ 	</select>	
+ 	<!-- search 끝 -->
+
+	
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.iu.letter.ServiceLetter">
+ 	<insert id="linputdata">
+ 		INSERT INTO LETTER (LT_NO,LT_TITLE,LT_CONTENT,LT_WRITER)
+ 		VALUES(LT_NO_SEQ.NEXTVAL,#{param1},#{param2},#{param3})
+ 	</insert>
+ <resultMap type="com.iu.letter.LetterDTO" id="ldto">
+   	<result property="LT_NO" column="LT_NO"/>
+	<result property="LT_TITLE" column="LT_TITLE"/>
+	<result property="LT_WRITEDAY" column="LT_WRITEDAY"/>
+	<result property="LT_CONTENT" column="LT_CONTENT"/>
+	<result property="LT_WRITER" column="LT_WRITER"/>
+</resultMap>
+	<select id="lout" resultMap="ldto">
+		SELECT LT_NO,LT_TITLE,TO_CHAR(LT_WRITEDAY, 'YYYY-MM-DD')LT_WRITEDAY,LT_CONTENT,LT_WRITER FROM LETTER
+		ORDER BY LT_NO DESC
+	</select>
+	<select id="ldetail" resultMap="ldto">
+		SELECT LT_NO,LT_TITLE,TO_CHAR(LT_WRITEDAY, 'YYYY-MM-DD')LT_WRITEDAY,LT_CONTENT,LT_WRITER FROM LETTER WHERE LT_NO=#{param1}
+	</select>
+	<delete id="ldelete">
+		DELETE FROM LETTER WHERE LT_NO=#{param1}
+	</delete>
+	<select id="lmodify" resultMap="ldto">
+		SELECT * FROM LETTER WHERE LT_NO=#{param1}
+	</select>
+	<update id="lmodifydata">
+		UPDATE LETTER SET LT_TITLE=#{param2},LT_CONTENT=#{param4} WHERE LT_NO=#{param1}
+	</update>
+	<select id="cntpage" resultType="int">
+		SELECT COUNT(*)FROM LETTER
+	</select>	
+	<select id="selectpage" resultMap="ldto">
+		SELECT * FROM(
+		SELECT ROWNUM RN,A.*FROM(
+		SELECT * FROM LETTER ORDER BY LT_NO DESC)A)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>			
+ </mapper>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+   <definition name="baseLayout"  template="/WEB-INF/views/layout.jsp">
+      <put-attribute name="body" value="" />
+      <put-attribute name="top" value="/WEB-INF/views/top.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+   </definition>
+
+	<!-- member -->
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+	</definition>
+	<definition name="input" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/input.jsp" />
+	</definition>
+	<definition name="loginform" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/loginform.jsp" />
+	</definition>
+	<!-- member 끝 -->
+	
+	<!-- board -->
+	<definition name="boinput" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/boinput.jsp" />
+	</definition>
+	<definition name="bodetail" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/bodetail.jsp" />
+	</definition>
+	<definition name="bodetail1" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/bodetail1.jsp" />
+	</definition>	
+	<definition name="bomodify" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/bomodify.jsp" />
+	</definition>
+	<definition name="bodeleteui" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/bodeleteui.jsp" />
+	</definition>
+	<definition name="bopage" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/bopage.jsp" />
+	</definition>
+	<!-- board 끝 -->
+	
+	<!-- letter -->
+	<definition name="linput" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/linput.jsp" />
+	</definition>
+	<definition name="cdn" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/cdn.jsp" />
+	</definition>
+	<definition name="ldetail" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ldetail.jsp" />
+	</definition>
+	<definition name="lmodify" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/lmodify.jsp" />
+	</definition>
+	<definition name="lpage" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/lpage.jsp" />
+	</definition>
+	<!-- letter 끝 -->
+		
+	<!-- photo -->
+	<definition name="ptinput" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptinput.jsp" />
+	</definition>
+	<definition name="ptout" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptout.jsp" />
+	</definition>
+	<definition name="ptmodify" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptmodify.jsp" />
+	</definition>
+	<definition name="ptdetail" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptdetail.jsp" />
+	</definition>
+	<definition name="ptdetail1" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptdetail1.jsp" />
+	</definition>	
+	<definition name="ptpage" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ptpage.jsp" />
+	</definition>
+	<!-- photo 끝 -->
+	
+	<!-- notice -->
+	<definition name="ntinput" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ntinput.jsp" />
+	</definition>
+	<definition name="cdn" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/cdn.jsp" />
+	</definition>
+	<definition name="ntdetail" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ntdetail.jsp" />
+	</definition>
+	<definition name="ntmodify" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ntmodify.jsp" />
+	</definition>
+	<definition name="ntpage" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/ntpage.jsp" />
+	</definition>
+	<!-- notice 끝 -->
+		
+	<!-- melon -->
+	<definition name="Melonmain" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views2/Melonmain.jsp" />
+	</definition>
+   <definition name="Celebrity" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views2/Celebrity.jsp" />
+	</definition>
+	<definition name="celebritylyric" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views2/celebritylyric.jsp" />
+	</definition>
+	<!-- melon 끝 -->
+	
+</tiles-definitions>

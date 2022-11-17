@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+  /*푸터*/
+footer p{
+    position: absolute;
+    text-align: center;
+    margin-top: 26px;
+    width: 100%;
+    color: rgba(215, 215, 215, 0.603);
+    font-family: 'InkLipquid';
+
+}

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.iu.photo.ServicePhoto">
+
+	<insert id="ptinputdata">
+		INSERT INTO PHOTO (PT_NO,PT_TITLE,PT_CONTENT,PT_PICTURE,PT_WRITER,PT_READCNT,PT_LIKE,RECNT)
+		VALUES(PT_NO_SEQ.NEXTVAL,#{param1}, #{param2}, #{param3}, #{param4},0,0,0)
+	</insert>
+
+	<select id="ptout" resultType="com.iu.photo.PhotoDTO">
+		SELECT PT_NO,PT_TITLE,TO_CHAR(PT_WRITEDAY, 'YYYY-MM-DD')PT_WRITEDAY,PT_CONTENT,PT_PICTURE,PT_WRITER,PT_READCNT,PT_LIKE,RECNT
+		FROM PHOTO ORDER BY PT_NO DESC
+	</select>
+	
+	<select id="ptdetail" resultType="com.iu.photo.PhotoDTO">
+		SELECT PT_NO,PT_TITLE,TO_CHAR(PT_WRITEDAY, 'YYYY-MM-DD')PT_WRITEDAY,PT_CONTENT,PT_PICTURE,PT_WRITER,PT_READCNT,PT_LIKE,RECNT
+		FROM PHOTO WHERE PT_NO=#{param1}
+	</select>
+	<update id="readcntup">
+ 		UPDATE PHOTO SET PT_READCNT=PT_READCNT+1 WHERE PT_NO=#{param1} 
+    </update>	
+
+	<select id="ptmodify" resultType="com.iu.photo.PhotoDTO">
+		SELECT * FROM PHOTO WHERE PT_NO=#{param1}
+	</select>   
+	<update id="ptupdate">
+		UPDATE PHOTO SET PT_TITLE=#{param2},PT_CONTENT=#{param4},PT_PICTURE=#{param5} WHERE PT_NO=#{param1}
+	</update> 
+	
+	<select id="ptdeleteui" resultType="com.iu.photo.PhotoDTO">
+		SELECT * FROM PHOTO WHERE PT_NO=#{param1}
+	</select>
+	<delete id="ptdelete">
+		DELETE FROM PHOTO WHERE PT_NO=#{param1}
+	</delete>
+	
+	<!-- search -->
+ 	<select id="pttitlesearch" resultType="com.iu.photo.PhotoDTO">
+ 		SELECT * FROM PHOTO WHERE PT_TITLE LIKE '%'||#{param2}||'%'
+ 	</select>
+ 	<select id="ptwritersearch" resultType="com.iu.photo.PhotoDTO">
+ 		SELECT * FROM PHOTO WHERE PT_WRITER LIKE '%'||#{param6}||'%'
+ 	</select>	
+ 	<!-- search 끝 -->
+	
+	<select id="cntpage" resultType="int">
+		SELECT COUNT(*)FROM PHOTO
+	</select>	
+	<select id="selectpage" resultType="com.iu.photo.PhotoDTO">
+		SELECT * FROM(
+		SELECT ROWNUM RN,A.*FROM(
+		SELECT * FROM PHOTO ORDER BY PT_NO DESC)A)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 댓글 -->
+	<insert id="ptreplysave">
+      INSERT INTO PTREPLY(PT_NO,PT_RNO,PT_WRITER,PT_CONTENT,PT_GROUPS,PT_STEP,PT_INDENT)
+      VALUES(#{param1},PT_RNO_SEQ.NEXTVAL,#{param2},#{param3},PT_RNO_SEQ.CURRVAL,1,0)
+    </insert>
+	<select id="ptreplylist" resultType="com.iu.photo.PtReplyDTO">
+	  SELECT PT_NO,PT_RNO,TO_CHAR(PT_WRITEDAY, 'YYYY-MM-DD')PT_WRITEDAY,PT_WRITER,PT_CONTENT,PT_GROUPS,PT_STEP,PT_INDENT 
+	  FROM PTREPLY WHERE PT_NO=#{param1} ORDER BY PT_GROUPS ASC, PT_RNO ASC, PT_STEP ASC 
+	</select>
+		<!-- 댓글 삭제 -->
+	<delete id="ptredelete">
+      DELETE FROM PTREPLY WHERE PT_RNO=#{PT_RNO}
+   	</delete>
+    <select id="ptno" resultType="int">
+       SELECT PT_NO FROM PTREPLY WHERE PT_RNO=#{PT_RNO}
+    </select>
+    	<!-- 댓글 수정 -->
+ 	<update id="PTReUpdateForm">
+ 		update PTREPLY set PT_CONTENT=#{param4} where PT_RNO=#{param2}
+ 	</update>
+        <!-- 댓글 수 표시 -->
+    <update id="recnt">
+       UPDATE PHOTO  SET RECNT = (SELECT COUNT(PT_RNO) FROM PTREPLY WHERE PT_NO=#{PT_NO}) WHERE PT_NO = #{PT_NO}
+    </update>
+        <!-- 댓글 삭제시 댓글수 표시도 삭제 -->   
+    <update id="recntdown">
+       UPDATE PHOTO  SET RECNT = (SELECT COUNT(PT_RNO) FROM PTREPLY WHERE PT_NO=#{PT_NO}) WHERE PT_NO = #{PT_NO}
+    </update> 	     
+	<!-- 댓글 끝 -->	
+	
+	<!-- 대댓글 -->
+	<insert id="ptrereply">
+	 INSERT INTO PTREPLY(PT_NO,PT_RNO,PT_WRITER,PT_CONTENT,PT_GROUPS,PT_STEP,PT_INDENT) 
+	 VALUES(#{param1},PT_RNO_SEQ.NEXTVAL,#{param2},#{param3},#{param4},#{param5},#{param6})
+  	</insert>
+	<update id="ptmakereply">
+	 UPDATE PTREPLY SET PT_STEP=PT_STEP+1 WHERE PT_GROUPS=#{param1} and PT_STEP>#{param2} 
+	</update>
+	<!-- 대댓글 끝 -->
+	
+	
+	<!-- 추천 저장 -->
+	<insert id="insertLike">
+		insert into PT_LIKE(PLI_NO , PT_NO , MEM_NICKNAME , LIKECHECK) 
+		values(PLI_NO_SEQ.NEXTVAL,#{param1},#{param2},0)
+	</insert>
+ 	<!-- 댓글 추천수 -->
+    <update id="updateLike" >
+        update PHOTO set 
+        PT_LIKE = PT_LIKE+1
+        where PT_NO = #{PT_NO}
+    </update>
+    <!-- 댓글 추천 중복방지 select문 -->
+    <select id="LikeCheck" resultType="int">
+        select count(LIKECHECK) from PT_LIKE where PT_NO = #{param1} and MEM_NICKNAME = #{param2}
+    </select>
+    <!-- 댓글 추천수 취소 -->
+    <update id="UpdateLikeCancle">
+    	update PHOTO set 
+        PT_LIKE = PT_LIKE-1
+        where PT_NO = #{PT_NO}
+    </update>
+    <!-- 댓글 추천취소 시 delete -->
+    <delete id="deleteLike">
+    	delete from PT_LIKE where PT_NO = #{param1} and MEM_NICKNAME = #{param2} 
+    </delete>
+                 
+   	<!-- 끝 -->
+	    				
+</mapper>
+
