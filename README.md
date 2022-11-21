@@ -32,7 +32,7 @@ https://gist.github.com/rxaviers/7360908 깃허브 이모지 추가
 
   - Tiles
 
-## DataBase 설계
+## :mag_right: DataBase 설계
 
 ![DB](https://user-images.githubusercontent.com/111732773/202987061-72255b83-346d-428e-b7cf-63fca1bedf35.JPG)
 
