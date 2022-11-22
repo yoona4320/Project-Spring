@@ -1,4 +1,4 @@
-# :purple_heart: Project : IU FanPage 
+# :purple_heart: Project : IU FanPage :purple_heart:
 
 아이유 팬 페이지
 
