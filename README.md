@@ -41,7 +41,7 @@ https://gist.github.com/rxaviers/7360908 깃허브 이모지 추가
 
 ## :family: 개발
 
-<h3> #Front-end developer : <a href="https://github.com/jiyoung1997">안지영</a>, <a href="https://github.com/jinsheo">허진석</a> </h3>
+<h4> #Front-end developer : <a href="https://github.com/jiyoung1997">안지영</a>, <a href="https://github.com/jinsheo">허진석</a> </h4>
   
-<h3> #Back-end developer : <a href="https://github.com/yoona4320">최민경</a>, <a href="https://github.com/rlagusdn6545">김현우</a> </h3>
+<h4> #Back-end developer : <a href="https://github.com/yoona4320">최민경</a>, <a href="https://github.com/rlagusdn6545">김현우</a> </h4>
 
