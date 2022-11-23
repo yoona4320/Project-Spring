@@ -28,7 +28,7 @@ https://gist.github.com/rxaviers/7360908 깃허브 이모지 추가
 
   - JAVA
 
-  - Oracle DB
+  - Oracle SQL
 
   - Mybatis
 
